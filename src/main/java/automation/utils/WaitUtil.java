@@ -11,7 +11,7 @@ import java.time.Duration;
 
 public class WaitUtil
 {
-    private static final int WAIT_PERIOD_IN_SECONDS = 10;
+    private static final int WAIT_PERIOD_IN_SECONDS = 35;
     public static void waitUntilVisible(WebElement element)
     {
         new FluentWait<>(DriverSingleton.getDriver())

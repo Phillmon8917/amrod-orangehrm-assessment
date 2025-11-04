@@ -4,6 +4,10 @@ import lombok.Getter;
 
 import java.util.Objects;
 
+/**
+ * This is a builder class that will contain all the test data you have used on
+ * your test data sheet
+ */
 @Getter
 public class LoginDataObject
 {

@@ -8,6 +8,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class reads data from an Excel and load it to an object ->  LandingPageDataObject
+ */
 public class LandingPageDataLoader
 {
     public static List<LandingPageDataObject> loadData()

@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class LoginFlowCommand implements Command
+class LoginFlowCommand implements Command
 {
     @Autowired
     private LoginFlow loginFlow;
@@ -19,11 +19,5 @@ public class LoginFlowCommand implements Command
     public void undo()
     {
         loginFlow.logOutOfOrangeHRMApp();
-    }
-
-    @Override
-    public void redo(String username, String password)
-    {
-        execute(username, password);
     }
 }

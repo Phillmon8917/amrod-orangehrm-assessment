@@ -3,6 +3,10 @@ package automation.flags;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+/**
+ * This enum constant helps to match the scenario we are on so
+ * the relevant testing can be done
+ */
 @AllArgsConstructor
 @Getter
 public enum LandingPageAssertionsFlag

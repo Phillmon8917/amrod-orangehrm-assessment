@@ -10,6 +10,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * This class serves as service to assert against different cases from login page
+ */
 @Service
 public class LoggingAssertion
 {

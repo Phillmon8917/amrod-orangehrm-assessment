@@ -2,12 +2,11 @@ package automation.basetest;
 
 import automation.assertions.LandingPageAssertion;
 import automation.config.RunFrameworkConfiguration;
-import automation.dataloader.landingpage.LandingPageDataLoader;
-import automation.dataloader.landingpage.LandingPageDataObject;
 import automation.flow.Command;
 import automation.reportinglibrary.ExtentReportManager;
 import automation.strategy.DriverSingleton;
 import com.aventstack.extentreports.ExtentReports;
+import io.github.cdimascio.dotenv.Dotenv;
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,12 +18,17 @@ import org.testng.asserts.SoftAssert;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Handles operations for child class test but child can still provide its specific implementation
+ * It sorts of generate template for any test
+ */
 @SpringBootTest(classes = RunFrameworkConfiguration.class)
 public abstract class BaseTest extends AbstractTestNGSpringContextTests implements TestLifecycle
 {
     protected WebDriver driver;
     protected ExtentReports extentReports;
     protected SoftAssert softAssert;
+    protected static final Dotenv dotenv = Dotenv.load();
 
     @Autowired
     protected LandingPageAssertion landingPageAssertion;

@@ -5,6 +5,7 @@ import automation.basetest.BaseTest;
 import automation.config.RunFrameworkConfiguration;
 import automation.dataloader.login.LoginDataLoader;
 import automation.dataloader.login.LoginDataObject;
+import automation.email.Email;
 import automation.exceptions.NoTestDataException;
 import automation.exceptions.TestFlagNotImplementedException;
 import automation.flags.LoginAssertionsFlag;
@@ -12,6 +13,7 @@ import automation.flow.CommandInvoker;
 import automation.properties.ConfigPropInstance;
 import automation.reportinghelpers.LoginReportingHelper;
 import automation.reportinglibrary.ExtentReportManager;
+import automation.utils.ConfigUtil;
 import automation.utils.ScreenshotUtil;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
@@ -48,7 +50,7 @@ public class LoginTest extends BaseTest
 
         for (LoginDataObject loginDataObject : loginDataObjects)
         {
-            driver.get(ConfigPropInstance.getConfig().url());
+            driver.get(ConfigUtil.getUrl());
             boolean response = false;
 
             String scenario = loginDataObject.getScenarioName();
@@ -68,10 +70,10 @@ public class LoginTest extends BaseTest
 
             if (response)
             {
-                extentTest.pass("Scenario Passed",  MediaEntityBuilder.createScreenCaptureFromBase64String(Objects.requireNonNull(ScreenshotUtil.captureScreenshotAsBase64(driver))).build());
+                extentTest.pass("Scenario Passed", MediaEntityBuilder.createScreenCaptureFromBase64String(Objects.requireNonNull(ScreenshotUtil.captureScreenshotAsBase64(driver))).build());
             } else
             {
-                extentTest.fail("Scenario Failed",  MediaEntityBuilder.createScreenCaptureFromBase64String(Objects.requireNonNull(ScreenshotUtil.captureScreenshotAsBase64(driver))).build());
+                extentTest.fail("Scenario Failed", MediaEntityBuilder.createScreenCaptureFromBase64String(Objects.requireNonNull(ScreenshotUtil.captureScreenshotAsBase64(driver))).build());
             }
 
             softAssert.assertTrue(response);
@@ -82,6 +84,10 @@ public class LoginTest extends BaseTest
             }
         }
 
+        if (ConfigPropInstance.getConfig().sendEmail().trim().equalsIgnoreCase("Yes"))
+        {
+            Email.sendEmail();
+        }
         softAssert.assertAll();
     }
 

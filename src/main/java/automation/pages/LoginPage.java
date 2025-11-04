@@ -1,9 +1,12 @@
 package automation.pages;
 
 import automation.basepage.LoginBasePage;
+import automation.strategy.DriverSingleton;
 import automation.utils.WaitUtil;
+import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.PageFactory;
 import org.springframework.stereotype.Component;
 
 @Slf4j
@@ -66,9 +69,5 @@ public class LoginPage extends LoginBasePage
         {
             return false;
         }
-    }
-
-    private LoginPage()
-    {
     }
 }

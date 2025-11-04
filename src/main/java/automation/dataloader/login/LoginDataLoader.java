@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
+/**
+ * This class reads data from an Excel and load it to an object ->  LoginDataObject
+ */
 public class LoginDataLoader
 {
     private static final Faker faker = new Faker();

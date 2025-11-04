@@ -4,11 +4,14 @@ import automation.basetest.BaseTest;
 import automation.config.RunFrameworkConfiguration;
 import automation.dataloader.landingpage.LandingPageDataLoader;
 import automation.dataloader.landingpage.LandingPageDataObject;
+import automation.email.Email;
 import automation.exceptions.NoTestDataException;
 import automation.exceptions.TestFlagNotImplementedException;
 import automation.flags.LandingPageAssertionsFlag;
+import automation.properties.ConfigPropInstance;
 import automation.reportinghelpers.LandingPageReportingHelper;
 import automation.reportinglibrary.ExtentReportManager;
+import automation.utils.ConfigUtil;
 import automation.utils.ScreenshotUtil;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
@@ -47,7 +50,7 @@ public class LandingPageTest extends BaseTest
 
             try
             {
-                driver.get(data.getUrl());
+                driver.get(ConfigUtil.getUrl());
             } catch (Exception ex)
             {
                 //Ignored for cases of unknown domain
@@ -61,7 +64,14 @@ public class LandingPageTest extends BaseTest
             {
                 extentTest.fail("Test Failed", MediaEntityBuilder.createScreenCaptureFromBase64String(Objects.requireNonNull(ScreenshotUtil.captureScreenshotAsBase64(driver))).build());
             }
+            softAssert.assertTrue(response);
         }
+
+        if (ConfigPropInstance.getConfig().sendEmail().trim().equalsIgnoreCase("Yes"))
+        {
+            Email.sendEmail();
+        }
+        softAssert.assertAll();
     }
 
     private boolean assertionHelper(String expectedResults)

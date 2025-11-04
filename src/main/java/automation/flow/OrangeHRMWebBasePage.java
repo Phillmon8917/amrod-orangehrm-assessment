@@ -1,10 +1,7 @@
 package automation.flow;
 
-import automation.strategy.DriverSingleton;
-import jakarta.annotation.PostConstruct;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 abstract class OrangeHRMWebBasePage
 {
@@ -22,10 +19,4 @@ abstract class OrangeHRMWebBasePage
 
     @FindBy(xpath = "//*[text()='Logout']")
     protected WebElement logoutOption;
-
-    @PostConstruct
-    private void init()
-    {
-        PageFactory.initElements(DriverSingleton.getDriver(), this);
-    }
 }

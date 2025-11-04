@@ -2,6 +2,10 @@ package automation.dataloader.landingpage;
 
 import lombok.Getter;
 
+/**
+ * This is a builder class that will contain all the test data you have used on
+ * your test data sheet
+ */
 @Getter
 public class LandingPageDataObject
 {

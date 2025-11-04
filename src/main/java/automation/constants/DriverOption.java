@@ -1,5 +1,8 @@
 package automation.constants;
 
+/**
+ * Catered driver possibilities depending on the browser of your preference
+ */
 public class DriverOption
 {
     public static final String CHROME = "Chrome";
